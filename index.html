@@ -162,6 +162,61 @@
     .card-top-row{flex-direction:column}
     .score{text-align:left}
   }
+
+  /* ---- Cola de archivos / programas cargados ---- */
+  .cola{margin-top:14px; display:flex; flex-direction:column; gap:10px}
+  .cola:empty{display:none}
+  .fitem{border:1px solid var(--line); border-radius:11px; background:#fff; padding:12px 14px}
+  .fitem-top{display:flex; align-items:center; gap:10px; justify-content:space-between}
+  .fitem-name{font-weight:600; font-size:.9rem; word-break:break-all; display:flex; align-items:center; gap:8px; min-width:0}
+  .fitem-name .doc{color:var(--brand-2); flex:0 0 auto}
+  .fitem-x{border:none; background:none; color:var(--muted); cursor:pointer; font-size:1rem; line-height:1; padding:3px 7px; border-radius:7px; flex:0 0 auto}
+  .fitem-x:hover{background:#f3f6f9; color:var(--ink)}
+  .fitem-meta{display:flex; align-items:center; gap:14px; margin-top:11px; flex-wrap:wrap}
+  .fitem-count{font-size:.82rem; color:var(--muted)}
+  .fitem-count b{color:var(--brand)}
+  .fitem-mode{display:flex; align-items:center; gap:7px; font-size:.8rem; color:var(--muted)}
+  .fitem-mode select{width:auto; padding:6px 30px 6px 10px; font-size:.82rem; border-radius:8px; border-width:1px}
+  .fitem-progs{margin:11px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:6px}
+  .fitem-progs li{font-size:.77rem; background:var(--soft); border:1px solid var(--line-2); border-radius:99px; padding:3px 10px; color:#33495a; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+  /* ---- Resultados por asignatura de origen ---- */
+  .res-sub{font-size:.9rem; color:var(--muted); margin:6px 0 0}
+  .pcard{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); margin-bottom:14px; padding:16px 18px}
+  .pcard.is-conv{border-color:#bfe6d3}
+  .pcard.is-rev{border-color:#ecd6b0}
+  .pcard-head{display:flex; justify-content:space-between; gap:12px; align-items:flex-start}
+  .porigen{min-width:0}
+  .porigen-lbl{font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted)}
+  .porigen h3{margin:3px 0 0; font-size:1.05rem; font-weight:700; line-height:1.25}
+  .parch{display:block; font-size:.75rem; color:#8896a3; margin-top:2px; word-break:break-all}
+  .pstatus{flex:0 0 auto; font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:4px 11px; border-radius:99px; white-space:nowrap}
+  .pstatus.is-conv{background:#eafaf2; color:var(--accent-d)}
+  .pstatus.is-rev{background:#fbf1e0; color:#9a661f}
+  .pstatus.is-no{background:#f1f4f7; color:#7a8896}
+  .pmatch{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:13px; padding-top:13px; border-top:1px solid var(--line-2)}
+  .pmatch-info{display:flex; gap:10px; align-items:center; min-width:0}
+  .pm-arrow{color:var(--brand-2); font-weight:800; flex:0 0 auto; font-size:1.1rem}
+  .pm-code{font-size:.76rem; color:var(--muted); font-weight:600}
+  .pm-name{font-size:1.02rem; font-weight:700; line-height:1.2}
+  .pm-score{flex:0 0 auto; text-align:right}
+  .pm-score span{font-size:1.5rem; font-weight:800; color:var(--accent-d); line-height:1}
+  .pm-score small{font-size:.85rem; font-weight:700}
+  .pcard.is-rev .pm-score span{color:#9a661f}
+  .pae{font-size:.84rem; color:var(--brand); font-weight:700; margin-top:11px}
+  .pae .pae-lbl{color:var(--muted); font-weight:600}
+  .pnone{margin:13px 0 0; padding-top:13px; border-top:1px solid var(--line-2); font-size:.9rem; color:var(--muted); line-height:1.5}
+  .pdet{margin-top:12px}
+  .pdet>summary{font-size:.82rem; color:var(--brand-2); cursor:pointer; font-weight:600; list-style:none}
+  .pdet>summary::-webkit-details-marker{display:none}
+  .pdet>summary::before{content:'▸ '; font-size:.7rem}
+  .pdet[open]>summary::before{content:'▾ '}
+  .pdet .ae-box{margin-top:12px; border-top:none; padding-top:0}
+  .pdet .why{margin-top:14px}
+  .pcand{margin-top:14px; border-top:1px solid var(--line-2); padding-top:12px}
+  .pcand .pc-lbl{font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted)}
+  .pcand-row{display:flex; justify-content:space-between; gap:10px; margin-top:5px; font-size:.88rem; color:#33495a}
+  .pcand-row b{color:var(--brand)}
 </style>
 </head>
 <body>
@@ -169,7 +224,7 @@
   <div class="wrap">
     <div class="brand"><span class="mark"><span>U</span></span> UNAB · Facultad de Ingeniería</div>
     <h1>Convalidación de asignaturas</h1>
-    <p>Para postulantes que provienen de otra institución. Elige tu carrera de destino, sube el programa de la asignatura que cursaste y revisa con qué asignatura del plan UNAB podría convalidar.</p>
+    <p>Para postulantes que provienen de otra institución. Elige tu carrera de destino, sube el o los programas de las asignaturas que cursaste (un PDF por ramo, o un solo PDF con todas) y revisa con qué asignaturas del plan UNAB podrían convalidar.</p>
   </div>
 </header>
 
@@ -180,14 +235,14 @@
   </section>
 
   <section class="step">
-    <div class="step-lbl"><span class="n">2</span> Programa de la asignatura (PDF)</div>
-    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Subir PDF del programa">
+    <div class="step-lbl"><span class="n">2</span> Programas de las asignaturas (PDF)</div>
+    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Subir PDF de programas">
       <div class="ico">⬆</div>
-      <div class="t">Arrastra el PDF aquí o haz clic para elegirlo</div>
-      <div class="s">Programa o syllabus de la asignatura de origen · solo PDF con texto</div>
-      <div class="fname" id="fileName"></div>
+      <div class="t">Arrastra los PDF aquí o haz clic para elegirlos</div>
+      <div class="s">Uno o varios programas · puedes subir un PDF por asignatura, o un solo PDF con todas</div>
     </div>
-    <input type="file" id="file" accept="application/pdf" hidden>
+    <input type="file" id="file" accept="application/pdf" multiple hidden>
+    <div class="cola" id="cola"></div>
   </section>
 
   <div class="run-row">
@@ -281,6 +336,7 @@
 
 /* ---- Umbrales (calibrables) ------------------------------------------- */
 const UMBRAL_CONVALIDA = 0.45;   // zona alta -> se muestra como convalidable
+const UMBRAL_REVISION  = 0.25;   // zona media -> revisión manual
 const MAX_RESULTADOS    = 2;     // tope de tarjetas a mostrar
 
 /* ---- Stopwords español (palabras función) ----------------------------- */
@@ -439,10 +495,13 @@ function evaluar(textoDoc, indice){
 /* =========================================================================
    INTERFAZ
    ========================================================================= */
-let pdfjsListo=false, indiceActual=null, idfGlobal=null, textoDoc='', archivoNombre='';
+let cola=[], seqId=0;
+let indiceActual=null, idfGlobal=null;
 
 function $(id){ return document.getElementById(id); }
 function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),3200); }
+function pct(x){ return Math.round(x*100); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
 /* poblar selector de carreras */
 function poblarCarreras(){
@@ -452,135 +511,226 @@ function poblarCarreras(){
   }
 }
 
-/* extracción de texto del PDF (robusto en iframe/sandbox) */
-async function leerPDF(arrayBuffer){
+/* ---- Lectura de PDF: texto por páginas (robusto en iframe/sandbox) ----- */
+async function leerPDFPaginas(arrayBuffer){
   const pdf = await pdfjsLib.getDocument({data:arrayBuffer, verbosity:0}).promise;
-  let texto='';
+  const paginas=[];
   for(let p=1; p<=pdf.numPages; p++){
     const page = await pdf.getPage(p);
     const tc = await page.getTextContent();
-    texto += tc.items.map(i=>i.str).join(' ')+'\n';
+    paginas.push(tc.items.map(i=>i.str).join(' '));
   }
-  return texto;
+  return paginas;
 }
 
-async function manejarArchivo(file){
-  if(!file) return;
-  if(file.type!=='application/pdf' && !/\.pdf$/i.test(file.name)){
-    toast('El archivo debe ser un PDF.'); return;
+/* ---- Segmentación: un PDF puede traer 1 o varios programas ------------- */
+/* Marcadores de inicio de programa. Las palabras clave no llevan tilde, así
+   que el match case-insensitive sobre el texto original es seguro. */
+const RE_INICIO = /(programa\s+de\s+(?:la\s+)?asignatura|programa\s+de\s+estudios?|programa\s+formativo|nombre\s+de\s+(?:la\s+)?asignatura|nombre\s+del\s+curso|\bsyllabus\b)/gi;
+
+function limpiarNombre(s){
+  s=String(s||'').replace(/\s+/g,' ').trim();
+  s=s.replace(/\s*\b(c[oó]digo|cr[eé]dito\w*|sct|semestre|carrera|horas?|requisito\w*|prerequisito\w*|unidad\w*|tipo|nivel|facultad|departamento|a[ñn]o|periodo|per[ií]odo)\b.*$/i,'').trim();
+  s=s.replace(/[:\-–·•]+$/,'').trim();
+  if(s.length>70) s=s.slice(0,70).trim()+'…';
+  return s;
+}
+function nombreDeSegmento(seg, idx, archivo){
+  let m = seg.match(/(?:nombre\s+de\s+la\s+asignatura|nombre\s+del\s+curso|nombre\s+de\s+asignatura)\s*:?\s*([0-9A-Za-zÁÉÍÓÚÑÜáéíóúñü().,\/ -]{3,70})/i);
+  if(!m) m = seg.match(/\basignatura\s*:\s*([0-9A-Za-zÁÉÍÓÚÑÜáéíóúñü().,\/ -]{3,70})/i);
+  let nom = m ? limpiarNombre(m[1]) : '';
+  if(!nom || nom.length<3){
+    const base=String(archivo||'').replace(/\.pdf$/i,'').trim();
+    nom = base ? base : ('Programa '+(idx+1));
   }
-  archivoNombre=file.name;
-  $('fileName').textContent=file.name;
-  $('drop').classList.add('has-file');
-  try{
-    const buf = await file.arrayBuffer();
-    textoDoc = await leerPDF(buf);
-    if(textoDoc.replace(/\s/g,'').length < 40){
-      toast('No se pudo leer texto del PDF (¿es un escaneo sin texto?).');
-      textoDoc='';
-      return;
+  return nom;
+}
+function segmentar(paginas, archivo, modo){
+  const texto = paginas.join('\n');
+  if(modo==='unico'){
+    return [{nombre: nombreDeSegmento(texto,0,archivo), texto}];
+  }
+  if(modo==='pagina'){
+    return paginas
+      .map((t,i)=>({texto:t, idx:i}))
+      .filter(o=>o.texto.replace(/\s/g,'').length>=40)
+      .map((o,k)=>({nombre: nombreDeSegmento(o.texto,o.idx,archivo), texto:o.texto}));
+  }
+  /* AUTO: posiciones de marcadores de inicio repetidos (con distancia mínima
+     para no partir por encabezados/pies cercanos). */
+  const pos=[]; let mm; RE_INICIO.lastIndex=0;
+  while((mm=RE_INICIO.exec(texto))!==null){
+    const i=mm.index;
+    if(pos.length===0 || (i-pos[pos.length-1])>60) pos.push(i);
+    if(RE_INICIO.lastIndex===i) RE_INICIO.lastIndex++;
+  }
+  if(pos.length>=2 && pos.length<=80){
+    const segs=[];
+    for(let i=0;i<pos.length;i++){
+      const ini=pos[i], fin=(i+1<pos.length)?pos[i+1]:texto.length;
+      let t=texto.slice(ini,fin);
+      if(i===0 && pos[0]>0) t=texto.slice(0,pos[0])+t;
+      segs.push({nombre: nombreDeSegmento(t,i,archivo), texto:t});
     }
-    $('btnRun').disabled = !($('selCarrera').value);
-    toast('Programa cargado. Listo para evaluar.');
-  }catch(err){
-    console.error(err);
-    toast('No se pudo procesar el PDF.');
-    textoDoc='';
+    return segs;
   }
+  /* sin marcadores claros -> un solo programa (no sobre-fragmentar) */
+  return [{nombre: nombreDeSegmento(texto,0,archivo), texto}];
 }
 
+/* ---- Cola de archivos cargados ---------------------------------------- */
+function programasCargados(){
+  const out=[];
+  for(const f of cola) for(const p of f.programas) out.push({nombre:p.nombre, texto:p.texto, archivo:f.archivo});
+  return out;
+}
+function actualizarBoton(){
+  $('btnRun').disabled = !( $('selCarrera').value && programasCargados().length );
+}
+async function manejarArchivos(fileList){
+  const files = Array.from(fileList||[]).filter(f=> f.type==='application/pdf' || /\.pdf$/i.test(f.name));
+  if(!files.length){ toast('Selecciona uno o más archivos PDF.'); return; }
+  for(const file of files){
+    try{
+      const buf = await file.arrayBuffer();
+      const paginas = await leerPDFPaginas(buf);
+      if(paginas.join(' ').replace(/\s/g,'').length < 40){
+        toast('"'+file.name+'": sin texto legible (¿es un escaneo?).'); continue;
+      }
+      const item={id:++seqId, archivo:file.name, paginas, modo:'auto', programas:[]};
+      item.programas = segmentar(item.paginas, item.archivo, item.modo);
+      cola.push(item);
+    }catch(err){ console.error(err); toast('No se pudo leer "'+file.name+'".'); }
+  }
+  renderCola();
+  actualizarBoton();
+}
+function renderCola(){
+  const c=$('cola'); c.innerHTML='';
+  cola.forEach(item=>{
+    const div=document.createElement('div'); div.className='fitem';
+    const progNames=item.programas.map(p=>`<li>${esc(p.nombre)}</li>`).join('');
+    div.innerHTML = `
+      <div class="fitem-top">
+        <div class="fitem-name"><span class="doc">▦</span>${esc(item.archivo)}</div>
+        <button class="fitem-x" data-id="${item.id}" title="Quitar" aria-label="Quitar">✕</button>
+      </div>
+      <div class="fitem-meta">
+        <span class="fitem-count"><b>${item.programas.length}</b> ${item.programas.length===1?'programa':'programas'}</span>
+        <label class="fitem-mode">Lectura
+          <select data-mode="${item.id}">
+            <option value="auto"${item.modo==='auto'?' selected':''}>Automática</option>
+            <option value="pagina"${item.modo==='pagina'?' selected':''}>1 por página</option>
+            <option value="unico"${item.modo==='unico'?' selected':''}>Todo junto</option>
+          </select>
+        </label>
+      </div>
+      <ul class="fitem-progs">${progNames}</ul>`;
+    c.appendChild(div);
+  });
+  c.querySelectorAll('.fitem-x').forEach(b=>b.addEventListener('click',()=>{
+    cola=cola.filter(i=>String(i.id)!==String(b.dataset.id)); renderCola(); actualizarBoton();
+  }));
+  c.querySelectorAll('select[data-mode]').forEach(s=>s.addEventListener('change',()=>{
+    const it=cola.find(i=>String(i.id)===String(s.dataset.mode)); if(!it) return;
+    it.modo=s.value; it.programas=segmentar(it.paginas, it.archivo, it.modo);
+    renderCola(); actualizarBoton();
+  }));
+}
+
+/* ---- Evaluación y render por asignatura de origen --------------------- */
+function statusDe(score){
+  if(score>=UMBRAL_CONVALIDA) return {cls:'is-conv', lbl:'Convalidable'};
+  if(score>=UMBRAL_REVISION)  return {cls:'is-rev',  lbl:'Revisión manual'};
+  return {cls:'is-no', lbl:'Sin coincidencia'};
+}
 function correr(){
   const carrera=$('selCarrera').value;
   if(!carrera){ toast('Elige primero la carrera de destino.'); return; }
-  if(!textoDoc){ toast('Sube el PDF del programa de la asignatura.'); return; }
+  const progs=programasCargados();
+  if(!progs.length){ toast('Sube al menos un programa en PDF.'); return; }
   if(!idfGlobal) idfGlobal = construirIDFGlobal(BASE_UNAB);
   if(!indiceActual || indiceActual._carrera!==carrera){
     indiceActual = construirIndice(BASE_UNAB[carrera], idfGlobal);
     indiceActual._carrera = carrera;
   }
-  const ranking = evaluar(textoDoc, indiceActual);
-  render(ranking, carrera);
+  const evals = progs.map(pr=>({prog:pr, ranking:evaluar(pr.texto, indiceActual)}));
+  render(evals, carrera);
 }
+function tarjetaPrograma(prog, ranking){
+  const top = ranking[0];
+  const st = statusDe(top?top.score:0);
+  const p  = top?pct(top.score):0;
+  const card=document.createElement('article');
+  card.className='pcard '+st.cls;
 
-function pct(x){ return Math.round(x*100); }
-
-function render(ranking, carrera){
-  const cont=$('resultados');
-  cont.innerHTML='';
-  // SOLO las primeras MAX_RESULTADOS y SOLO en zona alta
-  const altos = ranking.filter(r=>r.score>=UMBRAL_CONVALIDA).slice(0,MAX_RESULTADOS);
-
-  if(altos.length===0){
+  let cuerpo='';
+  if(top && top.score>=UMBRAL_REVISION){
+    const cr = top.asig.creditos?` · ${top.asig.creditos} cr`:'';
+    const aeLine = top.aeTot
+      ? `<div class="pae"><span class="pae-lbl">Aprendizajes esperados cubiertos:</span> ${top.aeCov} de ${top.aeTot} · ${top.aePct}%</div>` : '';
+    const aeDet = top.aeTot
+      ? '<ul>'+top.aeItems.map(it=>`<li class="${it.ok?'ae-ok':'ae-no'}"><span class="ae-mk">${it.ok?'✓':'·'}</span>${esc(it.texto)}</li>`).join('')+'</ul>' : '';
+    const chips = top.matched.slice(0,10).map(t=>`<span class="chip">${esc(t)}</span>`).join('');
+    const seg = ranking[1];
+    const segHtml = (seg && seg.score>=UMBRAL_REVISION)
+      ? `<div class="pcand"><span class="pc-lbl">Otra opción</span><div class="pcand-row"><span>${esc(seg.asig.codigo)} · ${esc(seg.asig.nombre)}</span><b>${pct(seg.score)}%</b></div></div>` : '';
+    cuerpo = `
+      <div class="pmatch">
+        <div class="pmatch-info">
+          <span class="pm-arrow">→</span>
+          <div>
+            <div class="pm-code">${esc(top.asig.codigo)} · Semestre ${esc(top.asig.semestre)}${cr}</div>
+            <div class="pm-name">${esc(top.asig.nombre)}</div>
+          </div>
+        </div>
+        <div class="pm-score"><span>${p}<small>%</small></span></div>
+      </div>
+      <div class="meter"><div class="meter-fill" style="width:${p}%"></div>
+        <div class="meter-mark" style="left:${pct(UMBRAL_CONVALIDA)}%" title="Umbral ${pct(UMBRAL_CONVALIDA)}%"></div>
+      </div>
+      ${aeLine}
+      <details class="pdet"><summary>Ver detalle</summary>
+        ${top.aeTot?`<div class="ae-box"><div class="ae-head"><span class="ae-lbl">Aprendizajes esperados</span><span class="ae-val">${top.aeCov} de ${top.aeTot} · ${top.aePct}%</span></div><div class="ae-bar"><div class="ae-fill" style="width:${top.aePct}%"></div></div><div class="ae-det" style="margin-top:8px">${aeDet}</div></div>`:''}
+        ${chips?`<div class="why"><span class="why-lbl">Por qué coincide</span><div class="chips">${chips}</div></div>`:''}
+        ${segHtml}
+      </details>`;
+  } else {
     const best=ranking[0];
-    cont.innerHTML = `
-      <div class="empty">
-        <div class="empty-ico">○</div>
-        <h3>Sin coincidencias en zona alta</h3>
-        <p>Ninguna asignatura de <b>${carrera}</b> alcanzó el umbral de convalidación
-           (${pct(UMBRAL_CONVALIDA)}%). Este programa requiere
-           <b>revisión manual</b> de la Dirección de Carrera.</p>
-        <p class="hint">Coincidencia más alta: ${best.asig.nombre}
-           (${best.asig.codigo}) · ${pct(best.score)}% — bajo el umbral.</p>
-      </div>`;
-    cont.scrollIntoView({behavior:'smooth',block:'nearest'});
-    return;
+    cuerpo = `<p class="pnone">Ninguna asignatura del plan alcanzó el umbral de convalidación.${best?` Coincidencia más alta: ${esc(best.asig.nombre)} (${esc(best.asig.codigo)}) · ${pct(best.score)}%.`:''} Requiere revisión manual de la Dirección de Carrera.</p>`;
   }
 
-  const head=document.createElement('div');
-  head.className='res-head';
-  head.innerHTML = altos.length===1
-    ? `<span class="rh-eyebrow">Resultado</span><h2>1 asignatura convalidable</h2>`
-    : `<span class="rh-eyebrow">Resultado</span><h2>${altos.length} asignaturas convalidables</h2>`;
+  card.innerHTML = `
+    <div class="pcard-head">
+      <div class="porigen">
+        <span class="porigen-lbl">Asignatura de origen</span>
+        <h3>${esc(prog.nombre)}</h3>
+        ${prog.archivo?`<span class="parch">${esc(prog.archivo)}</span>`:''}
+      </div>
+      <span class="pstatus ${st.cls}">${st.lbl}</span>
+    </div>
+    ${cuerpo}`;
+  return card;
+}
+function render(evals, carrera){
+  const cont=$('resultados'); cont.innerHTML='';
+  const n=evals.length;
+  const conv=evals.filter(e=>e.ranking[0] && e.ranking[0].score>=UMBRAL_CONVALIDA).length;
+  const rev =evals.filter(e=>e.ranking[0] && e.ranking[0].score>=UMBRAL_REVISION && e.ranking[0].score<UMBRAL_CONVALIDA).length;
+
+  const head=document.createElement('div'); head.className='res-head';
+  head.innerHTML = `<span class="rh-eyebrow">Resultado · ${esc(carrera)}</span>
+    <h2>${n} ${n===1?'asignatura evaluada':'asignaturas evaluadas'}</h2>
+    <p class="res-sub">${conv} con convalidación sugerida${rev?` · ${rev} para revisión manual`:''}</p>`;
   cont.appendChild(head);
 
-  const nota=document.createElement('div');
-  nota.className='leyenda';
-  nota.innerHTML='Dos indicadores distintos: <b>Convalidable</b> mide el parecido global entre ambos programas (texto completo); <b>Aprendizajes esperados cubiertos</b> indica qué proporción de los aprendizajes del ramo aborda tu programa. Para la convalidación, este último suele ser el más relevante; el global sirve para ordenar.';
+  const nota=document.createElement('div'); nota.className='leyenda';
+  nota.innerHTML='Por cada asignatura de origen se muestra su mejor coincidencia en el plan UNAB. <b>Convalidable</b> mide el parecido global de contenidos; <b>Aprendizajes esperados cubiertos</b> indica qué proporción de los aprendizajes del ramo UNAB aborda tu programa (suele ser el criterio más relevante).';
   cont.appendChild(nota);
 
-  altos.forEach((r,i)=>{
-    const card=document.createElement('article');
-    card.className='card'+(i===0?' card-top':'');
-    const p=pct(r.score);
-    const terms = r.matched.slice(0,10).map(t=>`<span class="chip">${t}</span>`).join('');
-    let aeHtml = '';
-    if(r.aeTot){
-      const det = r.aeItems.map(it=>
-        `<li class="${it.ok?'ae-ok':'ae-no'}"><span class="ae-mk">${it.ok?'✓':'·'}</span>${it.texto}</li>`).join('');
-      aeHtml = `
-        <div class="ae-box">
-          <div class="ae-head">
-            <span class="ae-lbl">Aprendizajes esperados cubiertos</span>
-            <span class="ae-val">${r.aeCov} de ${r.aeTot} · ${r.aePct}%</span>
-          </div>
-          <div class="ae-bar"><div class="ae-fill" style="width:${r.aePct}%"></div></div>
-          <details class="ae-det"><summary>Ver detalle por aprendizaje</summary><ul>${det}</ul></details>
-        </div>`;
-    }
-    card.innerHTML = `
-      <div class="card-rank">${i+1}</div>
-      <div class="card-main">
-        <div class="card-top-row">
-          <div>
-            <div class="card-code">${r.asig.codigo} · Semestre ${r.asig.semestre}${r.asig.creditos?` · ${r.asig.creditos} cr`:''}</div>
-            <h3 class="card-name">${r.asig.nombre}</h3>
-          </div>
-          <div class="score">
-            <span class="score-num">${p}<small>%</small></span>
-            <span class="score-tag">Convalidable</span>
-          </div>
-        </div>
-        <div class="meter"><div class="meter-fill" style="width:${p}%"></div>
-          <div class="meter-mark" style="left:${pct(UMBRAL_CONVALIDA)}%" title="Umbral ${pct(UMBRAL_CONVALIDA)}%"></div>
-        </div>
-        ${aeHtml}
-        ${terms?`<div class="why"><span class="why-lbl">Por qué coincide</span><div class="chips">${terms}</div></div>`:''}
-      </div>`;
-    cont.appendChild(card);
-  });
+  evals.forEach(({prog,ranking})=> cont.appendChild(tarjetaPrograma(prog, ranking)) );
 
-  const disc=document.createElement('p');
-  disc.className='disclaimer';
+  const disc=document.createElement('p'); disc.className='disclaimer';
   disc.innerHTML='El porcentaje es una estimación de coincidencia de contenidos y <b>no constituye una resolución oficial</b>. La decisión final corresponde a la Dirección de Carrera / Coordinación Académica.';
   cont.appendChild(disc);
   cont.scrollIntoView({behavior:'smooth',block:'nearest'});
@@ -589,16 +739,14 @@ function render(ranking, carrera){
 /* ---- enganches de UI -------------------------------------------------- */
 function initUI(){
   poblarCarreras();
-  $('selCarrera').addEventListener('change',()=>{
-    $('btnRun').disabled = !($('selCarrera').value && textoDoc);
-  });
+  $('selCarrera').addEventListener('change', actualizarBoton);
   const drop=$('drop');
   drop.addEventListener('click',()=>$('file').click());
   drop.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();$('file').click();} });
-  $('file').addEventListener('change',e=>manejarArchivo(e.target.files[0]));
+  $('file').addEventListener('change',e=>{ manejarArchivos(e.target.files); e.target.value=''; });
   ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag');}));
   ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag');}));
-  drop.addEventListener('drop',e=>{ if(e.dataTransfer.files[0]) manejarArchivo(e.dataTransfer.files[0]); });
+  drop.addEventListener('drop',e=>{ if(e.dataTransfer.files && e.dataTransfer.files.length) manejarArchivos(e.dataTransfer.files); });
   $('btnRun').addEventListener('click',correr);
 }
 
